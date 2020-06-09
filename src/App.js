@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import './App.css';
 import { Container, Header,} from "semantic-ui-react";
-import Cards from "./Components/Cards"
+import FlashCards from "./Components/FlashCards"
 
 class App extends Component {
   state = {
@@ -23,7 +23,7 @@ class App extends Component {
     return (
       <Container>
         <Header as="h1">React Flash Cards</Header>
-        <Cards cards={cards}/>
+        <FlashCards cards={cards}/>
       </Container>
     )
   }
