@@ -5,6 +5,8 @@ const FlashCard =({id, name, result}) => (
   <>
   <Card.Content> {name} {result} </Card.Content> 
   <Button color="red">Delete</Button>
+  <Button color="green">View</Button>
+
   </>
 )
 

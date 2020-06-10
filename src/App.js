@@ -1,7 +1,8 @@
 import React,{Component} from 'react';
 import './App.css';
-import { Container, Header,} from "semantic-ui-react";
+import { Container, Header, TableHeader,} from "semantic-ui-react";
 import FlashCards from "./Components/FlashCards"
+import FlashForm from "./Components/FlashForm"
 
 class App extends Component {
   state = {
@@ -18,11 +19,21 @@ class App extends Component {
       {id:10, name:"What is the name of the Earth’s largest ocean?", result: "The Pacific Ocean"},
     ]
   } 
+
+  addCard = (card) => {
+    let newCard = {id: `${Math.random()}`, ...card,};
+    this.setState({cards: [newCard, ...this.state.cards],})
+  }
+
+
   render(){
     const {cards} = this.state
     return (
       <Container>
         <Header as="h1">React Flash Cards</Header>
+        <br/>
+        <FlashForm addCard={this.addCard}/>
+        <br/>
         <FlashCards cards={cards}/>
       </Container>
     )
