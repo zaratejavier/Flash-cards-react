@@ -11,6 +11,7 @@ class FlashForm extends React.Component{
     e.preventDefault()
     console.log(this.state)
     this.props.addCard(this.state)
+    this.setState({name: "", result: ""})
   }
 
   handleChange = (e) =>{

@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import './App.css';
-import { Container, Header, TableHeader,} from "semantic-ui-react";
+import { Container, Header,} from "semantic-ui-react";
 import FlashCards from "./Components/FlashCards"
 import FlashForm from "./Components/FlashForm"
 
@@ -25,6 +25,21 @@ class App extends Component {
     this.setState({cards: [newCard, ...this.state.cards],})
   }
 
+  // removeCard = (id) => {
+  //   const {cards} = this.state
+  //   const newCards = cards.filter((card) => card.id !== id)
+  //   this.setState({
+  //     cards: newCards,
+  //   })
+  // }
+
+  removeCard = (id) => {
+    const cards = this.state.cards.filter((c) => c.id !== id);
+    this.setState({
+      cards,
+    });
+  };
+
 
   render(){
     const {cards} = this.state
@@ -34,7 +49,7 @@ class App extends Component {
         <br/>
         <FlashForm addCard={this.addCard}/>
         <br/>
-        <FlashCards cards={cards}/>
+        <FlashCards cards={cards} remove={this.removeCard}/>
       </Container>
     )
   }
