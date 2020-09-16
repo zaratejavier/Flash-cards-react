@@ -34,9 +34,9 @@ const App = () =>{
     return (
       <Container>
         <Header as="h1"> Flash Cards</Header>
-        <br/>
+
         {/* <FlashForm addCard={this.addCard}/> */}
-        <br/>
+
         <FlashCards cards={cards} removeCard={removeCard} />
       </Container>
     )
