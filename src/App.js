@@ -1,12 +1,11 @@
-import React,{Component} from 'react';
+import React,{Component, useState} from 'react';
 import './App.css';
 import { Container, Header,} from "semantic-ui-react";
 import FlashCards from "./Components/FlashCards"
 import FlashForm from "./Components/FlashForm"
 
-class App extends Component {
-  state = {
-    cards: [
+const App = () =>{
+  const [cards, setCards] = useState([
       {id:1, name:"What is the tallest mountain?", result: "Mt Everest"},
       {id:2, name:"Who is the CEO of Amazon?", result: "Jeff Bezos"},
       {id:3, name:"In a website browser address bar, what does “www” stand for?", result: "World Wide Web"},
@@ -16,44 +15,32 @@ class App extends Component {
       {id:7, name:"What was the first toy to be advertised on television?", result: "Mr. Potato Head"},
       {id:8, name:"What is the tallest breed of dog in the world?", result: "The Great Dane"},
       {id:9, name:"What color eyes do most humans have?", result: "Brown"},
-      {id:10, name:"What is the name of the Earth’s largest ocean?", result: "The Pacific Ocean"},
-    ]
-  } 
+      {id:10, name:"What is the name of the Earth’s largest ocean?", result: "The Pacific Ocean"}
+  ])
+  
 
-  addCard = (card) => {
-    let newCard = {id: `${Math.random()}`, ...card,};
-    this.setState({cards: [newCard, ...this.state.cards],})
-  }
-
-  // removeCard = (id) => {
-  //   const {cards} = this.state
-  //   const newCards = cards.filter((card) => card.id !== id)
-  //   this.setState({
-  //     cards: newCards,
-  //   })
+  // const addCard = (card) => {
+  //   let newCard = {id: `${Math.random()}`, ...card,};
+  //   setCards([newCard, ...cards])
   // }
 
-  removeCard = (id) => {
-    const cards = this.state.cards.filter((c) => c.id !== id);
-    this.setState({
-      cards,
-    });
+  const removeCard = (id) => {
+    setCards(cards.filter((card) =>
+      card.id !== id
+    ))    
+    debugger
   };
-
-
-  render(){
-    const {cards} = this.state
+  
     return (
       <Container>
-        <Header as="h1">React Flash Cards</Header>
+        <Header as="h1"> Flash Cards</Header>
         <br/>
-        <FlashForm addCard={this.addCard}/>
+        {/* <FlashForm addCard={this.addCard}/> */}
         <br/>
-        <FlashCards cards={cards} remove={this.removeCard}/>
+        <FlashCards cards={cards} removeCard={removeCard} />
       </Container>
     )
   }
-}
 
 
 export default App;

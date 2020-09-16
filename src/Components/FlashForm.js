@@ -5,7 +5,7 @@ class FlashForm extends React.Component{
   state = {
     name: '',
     result: '',
-  }
+}
 
   handleSubmit =  (e) => {
     e.preventDefault()
