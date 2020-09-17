@@ -28,7 +28,6 @@ const App = () =>{
     setCards(cards.filter((card) =>
       card.id !== id
     ))    
-    debugger
   };
   
     return (
