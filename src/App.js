@@ -29,6 +29,10 @@ const App = () => {
       card.id !== id
     ))    
   };
+
+  const editCard = (id, info) => {
+    console.log("we are editing")
+  }
   
     return (
       <Container>
@@ -36,7 +40,7 @@ const App = () => {
 
         <FlashForm addCard={addCard}/>
 
-        <FlashCards cards={cards} removeCard={removeCard} />
+        <FlashCards cards={cards} removeCard={removeCard} editCard={editCard} />
       </Container>
     )
   }

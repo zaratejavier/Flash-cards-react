@@ -1,24 +1,26 @@
 import React, { useState } from "react"
 import {Form, FormGroup} from "semantic-ui-react"
 
-const FlashForm = (props) => {
-  // const [info, setInfo] = useState({
-  //   name: '',
-  //   result: '',
-  // })
-
+const FlashForm = ({addCard, editCard, id}) => {
   const [name, setName] = useState('')
   const [result, setResult] = useState('')
+  // const [editing, setEditing] = useState(false)
 
 
-  // const info = { name: name, result: result}
+  const info = { name: name, result: result}
 
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    props.addCard({name: name, result: result})
-    setName("")
-    setResult("")
+    if (editCard) {
+      editCard(id, info)
+      // props.changeEdit() 
+    }
+    else {
+      e.preventDefault()
+      addCard(info)
+      setName("")
+      setResult("")
+    }
   }
 
   // const handleChange = (e) => {
