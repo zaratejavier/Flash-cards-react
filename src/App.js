@@ -4,7 +4,7 @@ import { Container, Header,} from "semantic-ui-react";
 import FlashCards from "./Components/FlashCards"
 import FlashForm from "./Components/FlashForm"
 
-const App = () =>{
+const App = () => {
   const [cards, setCards] = useState([
       {id:1, name:"What is the tallest mountain?", result: "Mt Everest"},
       {id:2, name:"Who is the CEO of Amazon?", result: "Jeff Bezos"},
@@ -18,11 +18,11 @@ const App = () =>{
       {id:10, name:"What is the name of the Earth’s largest ocean?", result: "The Pacific Ocean"}
   ])
   
-
-  // const addCard = (card) => {
-  //   let newCard = {id: `${Math.random()}`, ...card,};
-  //   setCards([newCard, ...cards])
-  // }
+  const addCard = (card) => {
+    debugger
+    let newCard = {id: `${Math.random()}`, ...card,};
+    setCards([newCard, ...cards])
+  }
 
   const removeCard = (id) => {
     setCards(cards.filter((card) =>
@@ -34,12 +34,11 @@ const App = () =>{
       <Container>
         <Header as="h1"> Flash Cards</Header>
 
-        {/* <FlashForm addCard={this.addCard}/> */}
+        <FlashForm addCard={addCard}/>
 
         <FlashCards cards={cards} removeCard={removeCard} />
       </Container>
     )
   }
-
 
 export default App;

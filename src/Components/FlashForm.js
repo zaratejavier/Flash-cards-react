@@ -1,52 +1,57 @@
-import React from "react"
+import React, { useState } from "react"
 import {Form, FormGroup} from "semantic-ui-react"
 
-class FlashForm extends React.Component{
-  state = {
-    name: '',
-    result: '',
-}
+const FlashForm = (props) => {
+  // const [info, setInfo] = useState({
+  //   name: '',
+  //   result: '',
+  // })
 
-  handleSubmit =  (e) => {
+  const [name, setName] = useState('')
+  const [result, setResult] = useState('')
+
+
+  // const info = { name: name, result: result}
+
+
+  const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(this.state)
-    this.props.addCard(this.state)
-    this.setState({name: "", result: ""})
+    props.addCard({name: name, result: result})
+    setName("")
+    setResult("")
   }
 
-  handleChange = (e) =>{
-      this.setState({
-        [e.target.name]: e.target.value}) //this add what the user inputs the the state above
-  }
+  // const handleChange = (e) => {
+  //   setInfo({[e.target.name]: e.target.value})
+  // }
 
+  return(
+    <Form onSubmit={handleSubmit}>
+      <Form.Group widths="equal">
+        <Form.Input
+          fluid 
+          label = "Question"
+          // name= "name"
+          placeholder = "Enter a question.."
+          value={name}
+          // onChange={handleChange}
+          onChange={(e) => setName(e.target.value)}
+        />
+  
+        <Form.Input
+          fluid 
+          label = "Answer"
+          // name = "result"
+          placeholder = "Enter an answer.."
+          value={result}
+          // onChange={handleChange}
+          onChange={(e) => setResult(e.target.value)}
 
-  render(){
-    return(
-      <Form onSubmit={this.handleSubmit}>
-        <Form.Group widths="equal">
-          <Form.Input
-            fluid 
-            label = "Question"
-            name= "name"
-            placeholder = "Enter a question.."
-            value={this.state.name}
-            onChange={this.handleChange}
-          />
-
-          <Form.Input
-            fluid 
-            label = "Answer"
-            name = "result"
-            placeholder = "Enter an answer.."
-            value={this.state.result}
-            onChange={this.handleChange}
-          />
-          <Form.Button>Submit</Form.Button>
-        </Form.Group>
-      </Form>
-
-    )
-  }
+        />
+        <Form.Button>Submit</Form.Button>
+      </Form.Group>
+    </Form>
+  )
 }
-
+  
 export default FlashForm
